@@ -77,3 +77,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/assets/css
+src/assets/fonts
+src/assets/js
+yarn.lock

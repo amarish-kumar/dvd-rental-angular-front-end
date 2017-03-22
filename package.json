@@ -22,7 +22,7 @@
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
-    "zone.js": "^0.7.6"
+    "zone.js": "^0.7.6"       
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.2",
@@ -41,6 +41,26 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.0.0"
+    "typescript": "~2.0.0",
+
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-rename": "^0.0.3",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-shell": "^2.1.0",
+    "holderjs": "^2.9.4",
+    "jquery": "^3.1.1",
+    "metismenu": "^2.6.1",
+    "datatables.net": "^1.10.13",
+    "datatables.net-bs": "^1.10.13",
+    "datatables": "^1.10.13",
+    "validator": "^7.0.0" 
   }
 }
