@@ -9,14 +9,15 @@ export interface AuthInfo {
 	token: string,
 	refreshToken?: string,
 	expires?: string,
-	authenticated: boolean
+	authenticated: boolean,
+	user:any
 };
 
 @Injectable()
 export class AuthenticationService {
 
-	private _authInfo: AuthInfo = { ttl: null, token: null, expires: null, authenticated: false } as any;
-	constructor(private _httpProxy: HttpProxy) {
+	private _authInfo: AuthInfo = { ttl: null, token: null, expires: null, authenticated: false, user:null} as any;
+	constructor() {
 		let info = JSON.parse(sessionStorage.getItem("authInfo") || "{}");
 		info.token = info.token || null;
 		info.authenticated = info.authenticated === true;
@@ -27,30 +28,12 @@ export class AuthenticationService {
 		return raw === true ? this._authInfo : Observable.of(this._authInfo);
 	}
 	
-
-	public doLogout(loginCredentials): Observable<AuthInfo> {
-		
-		this._authInfo.token = null;
-		this._authInfo.authenticated = false;
-		sessionStorage.removeItem("authInfo");
-		return Observable.of(this._authInfo);
-	}
-
-	public doLogin(loginCredentials): Observable<AuthInfo> {
-		if (this._authInfo.token !== null && this._authInfo.token !== void 0)
-			return Observable.of(this._authInfo);
-		else
-			return this._httpProxy
-				.post("login", loginCredentials)
-				.map(function (data) {
-					this._authInfo = data.data;
-					return this._authInfo;
-				})
-	}
-
 	public setAuthInfo(authInfo: AuthInfo) {
 		this._authInfo = authInfo;		
-		sessionStorage.setItem("authInfo", JSON.stringify(this._authInfo));		
+		if(authInfo)
+			sessionStorage.setItem("authInfo", JSON.stringify(this._authInfo));		
+		else	
+			sessionStorage.removeItem("authInfo");
 	}
 }
 
