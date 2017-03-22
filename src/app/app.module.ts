@@ -13,7 +13,8 @@ import { AuthenticationService } from './shared/auth/authentication.service';
 let ROUTE_CONF:Routes = [
   {path:"", pathMatch:"full", loadChildren:"./modules/home/home.module#HomeModule"},  
   {path:"login", loadChildren:"./modules/login/login.module#LoginModule"},
-  {path:"**", redirectTo:""}
+  {path:"staff", loadChildren:"./modules/staff/staff.module#StaffModule"},
+  {path:"**", redirectTo:""} 
 ];
 let APP_ROUTES:ModuleWithProviders = RouterModule.forRoot(ROUTE_CONF,{useHash:true});
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import {LoginService} from "./login.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   private _loginForm:FormGroup = null;
   private _invalidMsg:string = null;
-  constructor(private _loginServ:LoginService) { }
+  constructor(private _loginServ:LoginService, private _router:Router) { }
 
   ngOnInit() {
     this._loginForm = new FormGroup({
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     this._loginServ
       .doLogin(this._loginForm.value)
       .subscribe((v)=>{
-        console.info(v);
+        if(v)
+          this._router.navigateByUrl("/staff");
       }, v=>{        
         this._invalidMsg = v.e.message;
       });

@@ -1,25 +1,23 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {LoginService} from "./login.service";
+import {StaffComponent} from "./staff.component";
 
 
-const LOGIN_ROUTES: Routes = [
-	{path: "", component: LoginComponent}
+const STAFF_ROUTES: Routes = [
+	{path: "", component: StaffComponent}
 ];
-const LOGIN_ROUTING: ModuleWithProviders = RouterModule.forChild(LOGIN_ROUTES);
+const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    LOGIN_ROUTING,
+    STAFF_ROUTING,
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: [LoginComponent],
-  providers:[LoginService]
+  declarations: [StaffComponent]
 })
-export class LoginModule { }
+export class StaffModule { }

@@ -24,7 +24,7 @@ export class LoginService {
           ttl: null,
           token: res.headers.get("authorization"),
           expires: null,
-          authenticated: false,
+          authenticated: true,
           user:res.data
         });
       }).map(res=>res.headers.get("authorization") !== void 0)

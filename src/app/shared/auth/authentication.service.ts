@@ -21,7 +21,7 @@ export class AuthenticationService {
 		let info = JSON.parse(sessionStorage.getItem("authInfo") || "{}");
 		info.token = info.token || null;
 		info.authenticated = info.authenticated === true;
-		this._authInfo = info;
+		this._authInfo = info;		
 	}
 
 	public getAuthInfo(raw?:boolean): Observable<AuthInfo> | AuthInfo {
