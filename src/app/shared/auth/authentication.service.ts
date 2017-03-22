@@ -24,8 +24,8 @@ export class AuthenticationService {
 		this._authInfo = info;		
 	}
 
-	public getAuthInfo(raw?:boolean): Observable<AuthInfo> | AuthInfo {
-		return raw === true ? this._authInfo : Observable.of(this._authInfo);
+	public getAuthInfo(raw?:boolean):AuthInfo {
+		return this._authInfo;
 	}
 	
 	public setAuthInfo(authInfo: AuthInfo) {

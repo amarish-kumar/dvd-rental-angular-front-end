@@ -8,12 +8,13 @@ import { AppComponent } from './app.component';
 import { AppHeaderModule } from './shared/app-header/app-header.module';
 import { HttpProxy } from './shared/http/http-proxy';
 import { AuthenticationService } from './shared/auth/authentication.service';
+import { CanActivateViaAuthGuard } from './shared/auth/CanActivateViaAuthGuard';
 
 
 let ROUTE_CONF:Routes = [
   {path:"", pathMatch:"full", loadChildren:"./modules/home/home.module#HomeModule"},  
   {path:"login", loadChildren:"./modules/login/login.module#LoginModule"},
-  {path:"staff", loadChildren:"./modules/staff/staff.module#StaffModule"},
+  {path:"staff", loadChildren:"./modules/staff/staff.module#StaffModule", canActivate:[CanActivateViaAuthGuard]},
   {path:"**", redirectTo:""} 
 ];
 let APP_ROUTES:ModuleWithProviders = RouterModule.forRoot(ROUTE_CONF,{useHash:true});
@@ -30,7 +31,7 @@ let APP_ROUTES:ModuleWithProviders = RouterModule.forRoot(ROUTE_CONF,{useHash:tr
     APP_ROUTES,
     AppHeaderModule   
   ],
-  providers: [HttpProxy, AuthenticationService],
+  providers: [HttpProxy, AuthenticationService, CanActivateViaAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
