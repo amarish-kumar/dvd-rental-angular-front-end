@@ -62,8 +62,8 @@ export class HttpProxy{
 		let info = this._authService.getAuthInfo(true) as AuthInfo;
 
 		if(info.authenticated && info.token)
-			headers.set("authorizaton", info.token);
-			
+			headers.set("authorization", info.token);
+
 		return headers;
 	}
 
