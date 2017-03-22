@@ -5,7 +5,7 @@
 import {Injectable} from "@angular/core";
 import {Http, RequestOptionsArgs, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs";
-import {AuthenticationService, AuthInfo} from "../auth/authentication.service";
+
 
 export interface IAppResponse{success:boolean,data?:any,headers?:Headers, error?:any};
 
@@ -14,35 +14,35 @@ export class HttpProxy{
 
 	private _retryTimes:number = 3;
 	private _baseUrl:string = "http://localhost:8085/api/v1.0/";
-	constructor(private _http:Http, private _authService:AuthenticationService){}
+	constructor(private _http:Http){}
 
-	get(url: string, options: {[key:string]:any}={}): Observable<any> {		
+	get(url: string, options: any={}): Observable<any> {		
 		let obs = this._http
-			.get(this._baseUrl+url, {...options, headers:this.addDefaultHeaders(options.headers)});
+			.get(this._baseUrl+url, { "headers":this.addDefaultHeaders(options.headers)} as any);
 
 		return this.handleResponse(obs).share();
 	}
 
-	post(url: string, body: any, options: {[key:string]:any}={}): Observable<any> {
+	post(url: string, body: any, options: any={}): Observable<any> {
 		console.info(this._baseUrl+url);
 		let obs = this._http
-			.post(this._baseUrl+url, body, {...options, headers:this.addDefaultHeaders(options.headers)});
+			.post(this._baseUrl+url, body, {"headers":this.addDefaultHeaders(options.headers)} as any);
 
 		return this.handleResponse(obs).share();
 	}
 
-	put(url: string, body: any, options: {[key:string]:any}={}): Observable<any> {
+	put(url: string, body: any, options: any={}): Observable<any> {
 
 		let obs = this._http
-			.put(this._baseUrl+url, body, {...options, headers:this.addDefaultHeaders(options.headers)});
+			.put(this._baseUrl+url, body, { "headers":this.addDefaultHeaders(options.headers)} as any);
 
 		return this.handleResponse(obs).share();
 	}
 
-	delete(url: string, options: {[key:string]:any}={}): Observable<any> {
+	delete(url: string, options: any={}): Observable<any> {
 
 		let obs = this._http
-			.delete(this._baseUrl+url, {...options, headers:this.addDefaultHeaders(options.headers)});
+			.delete(this._baseUrl+url, { "headers":this.addDefaultHeaders(options.headers)} as any);
 
 		return this.handleResponse(obs).share();
 	}
@@ -59,10 +59,10 @@ export class HttpProxy{
 		headers = headers || new Headers();
 		headers.set("Content-Type","application/json");
 		
-		let info = this._authService.getAuthInfo(true) as AuthInfo;
+		/*let info = this._authService.getAuthInfo(true) as AuthInfo;
 
 		if(info.authenticated && info.token)
-			headers.set("authorization", info.token);
+			headers.set("authorization", info.token);*/
 
 		return headers;
 	}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FilmListingService } from './film-listing.service';
 
 @Component({
   selector: 'dvd-film-listing',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class FilmListingComponent implements OnInit {
 
   private _filmsCatalog:any[] = [];
-  constructor() { }
+  constructor(private _filmListingService:FilmListingService) { }
 
-  ngOnInit() {
+  ngOnInit() {    
+    this._filmListingService.getFilmListing().subscribe((res)=>{
+      this._filmsCatalog = res.data;
+    });
   }
 
 }

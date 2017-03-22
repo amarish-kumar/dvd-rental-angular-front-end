@@ -6,6 +6,8 @@ import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppHeaderModule } from './shared/app-header/app-header.module';
+import { HttpProxy } from './shared/http/http-proxy';
+import { AuthenticationService } from './shared/auth/authentication.service';
 
 
 let ROUTE_CONF:Routes = [
@@ -27,7 +29,7 @@ let APP_ROUTES:ModuleWithProviders = RouterModule.forRoot(ROUTE_CONF,{useHash:tr
     APP_ROUTES,
     AppHeaderModule   
   ],
-  providers: [],
+  providers: [HttpProxy, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
