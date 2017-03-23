@@ -13,19 +13,26 @@ import { ActorsComponent } from "./actors/actors.component";
 import { FilmsModule } from "./films/films.module";
 import { FilmsComponent } from "./films/films.component";
 
+import { CustomersModule } from "./customers/customers.module";
+import { CustomersComponent } from "./customers/customers.component";
+
+//import { CategoriesModule } from "./categories/categories.module";
+//import { CategoriesComponent } from "./categories/categories.component";
+
+
 
 const STAFF_ROUTES: Routes = [
   {
     path: "", component: StaffComponent, children: [
       { path: "", component: DashboardComponent },
-      { path: "customers", component: ActorsComponent },
+      { path: "customers", component: CustomersComponent },
       { path: "stores", component: ActorsComponent },
       { path: "actors", component: ActorsComponent },
       { path: "films", component: FilmsComponent },
       { path: "addresses", component: ActorsComponent },
       { path: "inventory", component: ActorsComponent },
       { path: "rentals", component: ActorsComponent },
-      { path: "categories", component: ActorsComponent },
+      //{ path: "categories", component: CategoriesComponent },
       { path: "payments", component: ActorsComponent },
     ]
   },
@@ -42,7 +49,8 @@ const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
     FormsModule,
     DashboardModule,
     ActorsModule,
-    FilmsModule
+    FilmsModule,
+    CustomersModule
   ],
   declarations: [StaffComponent]
 })

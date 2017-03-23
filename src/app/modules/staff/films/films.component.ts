@@ -7,7 +7,7 @@ import { FilmsService } from './films.service';
     <div class="row">
         <div class="col-lg-12">
             <h1>Films</h1>
-            <dvd-app-grid [limit]="_limit" [currentPage]="_page" (onInteract)="onInteraction($event)" [data]="_Films"></dvd-app-grid>
+            <dvd-app-grid [limit]="_limit" [currentPage]="_page" (onInteract)="onInteraction($event)" [data]="_films"></dvd-app-grid>
         </div>
     </div>
   `,
@@ -15,19 +15,19 @@ import { FilmsService } from './films.service';
 })
 export class FilmsComponent implements OnInit {
 
-  private _Films: any[] = null;
+  private _films: any[] = null;
   private _limit:number = 15;
   private _page:number = 0;
   
-  constructor(private _FilmsServ: FilmsService) { }
+  constructor(private _filmsServ: FilmsService) { }
 
   ngOnInit() {
     this.getAllFilms({ limit: this._limit, offset: this._page });
   }
 
   getAllFilms(data:{ limit: number, offset: number}){
-    this._FilmsServ.getAllFilms({ limit: data.limit, offset: data.offset }).subscribe((res) => {      
-      this._Films = res.data || [];
+    this._filmsServ.getAllFilms({ limit: data.limit, offset: data.offset }).subscribe((res) => {      
+      this._films = res.data || [];
     });
   }
 
