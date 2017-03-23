@@ -10,6 +10,7 @@ import { HttpProxy } from './shared/http/http-proxy';
 import { Utils, KeysPipe } from './utils/keys';
 import { AuthenticationService } from './shared/auth/authentication.service';
 import { CanActivateViaAuthGuard } from './shared/auth/CanActivateViaAuthGuard';
+import { LoginService } from './modules/login/login.service';
 
 
 let ROUTE_CONF:Routes = [
@@ -33,7 +34,7 @@ let APP_ROUTES:ModuleWithProviders = RouterModule.forRoot(ROUTE_CONF,{useHash:tr
     AppHeaderModule,
     Utils
   ],
-  providers: [HttpProxy, AuthenticationService, CanActivateViaAuthGuard],
+  providers: [HttpProxy, AuthenticationService, CanActivateViaAuthGuard, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,6 +20,6 @@ const LOGIN_ROUTING: ModuleWithProviders = RouterModule.forChild(LOGIN_ROUTES);
     FormsModule
   ],
   declarations: [LoginComponent],
-  providers:[LoginService]
+  providers:[] //remove LoginService from this, and added to app.module sothat header also can have access to and call logout..
 })
 export class LoginModule { }

@@ -11,15 +11,14 @@ export class LoginService {
 
   constructor(private _httpProxy: HttpProxy, private _authServ: AuthenticationService) { }
 
-  public doLogout(loginCredentials) {
+  public doLogout() {
     this._authServ.setAuthInfo(null);
   }
 
   public doLogin(loginCredentials): Observable<boolean> {
     return this._httpProxy
       .post("login", loginCredentials)
-      .do((res) => {
-        console.info(res);
+      .do((res) => { 
         this._authServ.setAuthInfo({
           ttl: null,
           token: res.headers.get("authorization"),

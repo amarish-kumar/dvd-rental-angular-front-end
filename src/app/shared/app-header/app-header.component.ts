@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { AuthenticationService } from "../auth/authentication.service";
+import {LoginService} from "../../modules/login/login.service";
 
 @Component({
   selector: 'dvd-app-header',
@@ -14,7 +15,7 @@ export class AppHeaderComponent implements OnInit {
   private _isHome: boolean = false;
   private _destroyed:boolean = false;
 
-  constructor(private _router: Router, private _authServ:AuthenticationService) { }
+  constructor(private _router: Router, private _authServ:AuthenticationService, private _loginServ:LoginService) { }
 
   ngOnDestroy() {
     this._destroyed = true;
@@ -37,6 +38,11 @@ export class AppHeaderComponent implements OnInit {
       this._isHome = false;
       this._loggedIn = false;
     });
+  }
+
+  doLogout(){
+    this._loginServ.doLogout();
+    this._router.navigateByUrl("/");
   }
 
 
