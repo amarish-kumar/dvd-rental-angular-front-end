@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row">
+        <h1></h1>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-group fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{customerCount | number}}</div>
+                            <div>Customers</div>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-rupee fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{totalPayments | number}}</div>
+                            <div>Payments</div>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-green">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-server fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{inventoryCount | number}}</div>
+                            <div>Inventory</div>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-language fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{languageCount | number}}</div>
+                            <div>Languages</div>
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Top movies
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">                            
+                        <div *ngIf="topMovies && topMovies[0]" class="table">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>     
+                                        <th *ngFor="let field of topMovies[1].fields;let i=index;">{{field.name}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of topMovies[0]; let j=index">
+                                        <td v-for="(field, j) in topMovies[1].fields">{{item[field.name]}}</td>
+                                    </tr>                                        
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.col-lg-4 (nested) -->                                
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>

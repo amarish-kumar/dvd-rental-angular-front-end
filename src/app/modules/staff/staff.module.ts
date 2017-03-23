@@ -3,10 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {StaffComponent} from "./staff.component";
+import {DashboardModule} from "./dashboard/dashboard.module";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 
 const STAFF_ROUTES: Routes = [
-	{path: "", component: StaffComponent}
+	{path: "", component: StaffComponent, children:[
+    {path: "", component: DashboardComponent}
+  ]}
 ];
 const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
 
@@ -16,7 +20,8 @@ const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
     RouterModule,
     STAFF_ROUTING,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DashboardModule
   ],
   declarations: [StaffComponent]
 })
