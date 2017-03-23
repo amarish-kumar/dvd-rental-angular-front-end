@@ -30,8 +30,8 @@ export class AuthenticationService {
 	
 	public setAuthInfo(authInfo: AuthInfo) {		
 		if(authInfo){
-			sessionStorage.setItem("authInfo", JSON.stringify(this._authInfo));
 			this._authInfo = authInfo;		
+			sessionStorage.setItem("authInfo", JSON.stringify(this._authInfo));			
 		}else{
 			sessionStorage.removeItem("authInfo");
 			this._authInfo = { ttl: null, token: null, expires: null, authenticated: false, user:null};		

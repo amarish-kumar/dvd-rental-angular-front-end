@@ -10,6 +10,9 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { ActorsModule } from "./actors/actors.module";
 import { ActorsComponent } from "./actors/actors.component";
 
+import { FilmsModule } from "./films/films.module";
+import { FilmsComponent } from "./films/films.component";
+
 
 const STAFF_ROUTES: Routes = [
   {
@@ -18,7 +21,7 @@ const STAFF_ROUTES: Routes = [
       { path: "customers", component: ActorsComponent },
       { path: "stores", component: ActorsComponent },
       { path: "actors", component: ActorsComponent },
-      { path: "films", component: ActorsComponent },
+      { path: "films", component: FilmsComponent },
       { path: "addresses", component: ActorsComponent },
       { path: "inventory", component: ActorsComponent },
       { path: "rentals", component: ActorsComponent },
@@ -38,7 +41,8 @@ const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
     ReactiveFormsModule,
     FormsModule,
     DashboardModule,
-    ActorsModule
+    ActorsModule,
+    FilmsModule
   ],
   declarations: [StaffComponent]
 })
