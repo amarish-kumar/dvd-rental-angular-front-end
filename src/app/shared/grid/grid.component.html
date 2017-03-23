@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">&nbsp;</div>
+    <div class="panel-body">        
+        <div *ngIf="_data && _data.length>0" class="table">
+            <table width="100%" class="table table-bordered table-hover table-striped">                
+                <thead>
+                    <tr>     
+                        <th *ngFor="let key of _data[0] | keys">{{key}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of _data">
+                        <td *ngFor="let key of item | keys">{{item[key]}}</td>
+                    </tr>                                        
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="_data" class="panel-footer clearfix">
+        <div class="pull-left" *ngIf="_currentPage>=0">Showing page {{_currentPage/_limit}}</div>
+        <div class="pull-right">
+            <button (click)="onInteract('prev')" [disabled]="_currentPage===0">Prev</button>
+            <button (click)="onInteract('next')" [disabled]="_data.length < _limit">Next</button>
+        </div>
+    </div>
+</div>  

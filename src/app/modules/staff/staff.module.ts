@@ -2,15 +2,31 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {StaffComponent} from "./staff.component";
-import {DashboardModule} from "./dashboard/dashboard.module";
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import { StaffComponent } from "./staff.component";
+
+import { DashboardModule } from "./dashboard/dashboard.module";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+
+import { ActorsModule } from "./actors/actors.module";
+import { ActorsComponent } from "./actors/actors.component";
 
 
 const STAFF_ROUTES: Routes = [
-	{path: "", component: StaffComponent, children:[
-    {path: "", component: DashboardComponent}
-  ]}
+  {
+    path: "", component: StaffComponent, children: [
+      { path: "", component: DashboardComponent },
+      { path: "customers", component: ActorsComponent },
+      { path: "stores", component: ActorsComponent },
+      { path: "actors", component: ActorsComponent },
+      { path: "films", component: ActorsComponent },
+      { path: "addresses", component: ActorsComponent },
+      { path: "inventory", component: ActorsComponent },
+      { path: "rentals", component: ActorsComponent },
+      { path: "categories", component: ActorsComponent },
+      { path: "payments", component: ActorsComponent },
+    ]
+  },
+  { path: "**", redirectTo: "" }
 ];
 const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
 
@@ -21,7 +37,8 @@ const STAFF_ROUTING: ModuleWithProviders = RouterModule.forChild(STAFF_ROUTES);
     STAFF_ROUTING,
     ReactiveFormsModule,
     FormsModule,
-    DashboardModule
+    DashboardModule,
+    ActorsModule
   ],
   declarations: [StaffComponent]
 })
