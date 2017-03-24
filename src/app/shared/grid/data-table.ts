@@ -10,7 +10,7 @@ declare var jQuery: any;
 
 export class Ng2DataTable implements OnInit {
 
-    private _datatable: any;
+    private _datatable: any = null;
     @Input("options") private _options: any;
 
     constructor(private _element: ElementRef) { }
