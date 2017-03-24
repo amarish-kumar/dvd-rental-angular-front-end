@@ -21,7 +21,7 @@ export class Ng2DataTable implements OnInit {
     
     ngAfterViewInit() {
         console.info("ngAfterViewInit..");
-        if(this._datatable == null){
+        if(this._datatable === null){
             this._datatable = jQuery(this._element.nativeElement).DataTable(this._options || {
                 "scrollX": true,
                 "bPaginate": false,
