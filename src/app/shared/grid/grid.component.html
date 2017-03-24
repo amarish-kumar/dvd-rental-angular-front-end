@@ -2,7 +2,7 @@
     <div class="panel-heading">&nbsp;</div>
     <div class="panel-body">        
         <div *ngIf="_data && _data.length>0" class="table">
-            <table #myname width="100%" class="table table-bordered table-hover table-striped">                
+            <table data-table  width="100%" class="table table-bordered table-hover table-striped">                
                 <thead>
                     <tr>     
                         <th *ngFor="let key of _data[0] | keys">{{key}}</th>

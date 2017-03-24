@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from './grid.component';
 import { Utils } from '../../utils/keys';
+import {Ng2DataTable} from "./data-table";
 
 @NgModule({
   imports: [
@@ -9,6 +10,6 @@ import { Utils } from '../../utils/keys';
     Utils
   ],
   exports:[GridComponent],
-  declarations: [GridComponent]
+  declarations: [GridComponent,Ng2DataTable]
 })
 export class GridModule { }

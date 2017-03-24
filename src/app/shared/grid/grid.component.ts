@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output, ElementRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 
 declare var $;
 
@@ -16,7 +16,8 @@ declare var $;
           overflow: hidden;
           text-overflow: ellipsis;
       }
-  `]
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GridComponent implements OnInit {
 
@@ -25,39 +26,10 @@ export class GridComponent implements OnInit {
   @Input("data") private _data: any = [];
   @Output("onInteract") private _emitter: EventEmitter<any> = new EventEmitter();
 
-  @ViewChild("myname") ele:ElementRef;
-  private _table: any = null;
-
   constructor(private _eleRef: ElementRef) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes["_data"] && changes["_data"].currentValue !== changes["_data"].previousValue) {
-      this._table !== null && this._table.clear();
-    }
-  }
-
-  ngAfterContentChecked() {
-    /*console.info(this.ele);
-    if (this._table === null && this.ele) {      
-      this._table = $(this.ele.nativeElement).DataTable({
-        "scrollX": true,
-        "bPaginate": false,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bInfo": false,
-      });
-
-    }*/
-  }
-
-
-  ngOnDestroy() {
-    this._table !== null && this._table.destroy();
-  }
 
   onInteract(dir) {
     this._emitter.emit(dir);
